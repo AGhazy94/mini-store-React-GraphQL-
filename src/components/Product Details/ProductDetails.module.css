@@ -1,0 +1,150 @@
+.productDetails {
+	display: flex;
+	padding-top: 7.5rem;
+  gap: 7rem;
+}
+
+.productDetails__imgsWrapper {
+	display: flex;
+	gap: 2rem;
+}
+
+.productDetails__imgsWrapper--small {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 2.8rem;
+}
+
+.productDetails__imgsWrapper--img {
+	cursor: pointer;
+	width: 6.5rem;
+	height: 6.5rem;
+	object-fit: contain;
+	z-index: 1;
+}
+
+.product__outOfStock__wrapper {
+	position: absolute;
+	top: 0rem;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	color: #8d8f9a;
+	font-size: 2rem;
+}
+
+.hidden {
+	display: none;
+}
+
+.parent {
+	position: relative;
+}
+
+.productDetails__imgsWrapper--img--main {
+	width: 54rem;
+	height: 45rem;
+	object-fit: contain;
+}
+
+.productDetails__info {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.productDetails__info__name {
+	font-size: 2.4rem;
+}
+
+.productDetails__info__name--name {
+	font-weight: 600;
+	color: #1d1f22;
+	padding-bottom: 0.1rem;
+}
+
+.productDetails__info__name--brand {
+	font-weight: 400;
+}
+
+.productDetails__attributes__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.7rem 0;
+}
+
+.productDetails__attributes__wrapper--name{
+font-weight: 700;
+font-size: 1.5rem;
+}
+
+.productDetails__attributes__wrapper__items{
+  display: flex;
+  gap: .8rem
+}
+
+.productDetails__attributes__wrapper__items--value{
+  cursor: pointer;
+  border: 1px solid #1d1f22;
+  color: #1d1f22;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  transition: all .2s;
+}
+
+.productDetails__attributes__wrapper__items--value:hover {
+  color: #fff;
+  background-color: #1d1f22;
+}
+
+.productDetails__info--price{
+  font-weight: 700;
+  font-size: 1.56rem;
+  padding-bottom: 1rem;
+  color: #1d1f22;
+}
+
+.productDetails__info--price--value{
+color: #1d1f22;
+font-weight: 700;
+font-size: 2rem;
+}
+
+.productDetails__info__AddToCart{
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 1.7rem 13rem;
+  background-color: #5ECE7B;
+  color: #fff;
+  transition: all .2s;
+}
+
+.productDetails__info__outOfStock{
+	cursor: not-allowed;
+	text-align: center;
+	font-weight: 600;
+  font-size: 1.5rem;
+	font-size: 1.5rem;
+  padding: 1.7rem 13rem;
+
+}
+
+.productDetails__info__AddToCart:active {
+transform: scale(.95);
+}
+
+.productDetails__info__description{
+  font-size: 1.5rem;
+  color: #1d1f22;
+	line-height: 1.5;
+}
