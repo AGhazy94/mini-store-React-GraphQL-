@@ -9,7 +9,13 @@ export default class Cart extends Component {
 		backgroundImg: { imgIndex: 0, id: '' },
 	};
 
+	componentDidMount() {
+		this.context.totalPriceHandler()
+
+	}
+
 	displayCart = () => {
+		
 		const {
 			currentCurrency,
 			cart,
@@ -61,37 +67,37 @@ export default class Cart extends Component {
 							{currentCurrency === '$' && (
 								<span className={classes['cart__info--price--value']}>
 									{product.prices[0].currency.symbol}
-									{product.prices[0].amount}
+									{product.prices[0].amount * product.quantity}
 								</span>
 							)}
 							{currentCurrency === '£' && (
 								<span className={classes['cart__info--price--value']}>
 									{product.prices[1].currency.symbol}
-									{product.prices[1].amount}
+									{product.prices[1].amount * product.quantity}
 								</span>
 							)}
 							{currentCurrency === 'A$' && (
 								<span className={classes['cart__info--price--value']}>
 									{product.prices[2].currency.symbol}
-									{product.prices[2].amount}
+									{product.prices[2].amount * product.quantity}
 								</span>
 							)}
 							{currentCurrency === '¥' && (
 								<span className={classes['cart__info--price--value']}>
 									{product.prices[3].currency.symbol}
-									{product.prices[3].amount}
+									{product.prices[3].amount * product.quantity}
 								</span>
 							)}
 							{currentCurrency === '₽' && (
 								<span className={classes['cart__info--price--value']}>
 									{product.prices[4].currency.symbol}
-									{product.prices[4].amount}
+									{product.prices[4].amount * product.quantity}
 								</span>
 							)}
 							{!currentCurrency && (
 								<span className={classes['cart__info--price--value']}>
 									{product.prices[0].currency.symbol}
-									{product.prices[0].amount}
+									{product.prices[0].amount * product.quantity}
 								</span>
 							)}
 						</div>
@@ -174,10 +180,15 @@ export default class Cart extends Component {
 	};
 
 	render() {
+		const { cart, total } = this.context;
+		console.log(cart)
 		return (
 			<>
 				<h1 className={classes['heading']}>CART</h1>
-				{this.displayCart()}
+				{cart.length === 0 ? <h2>No Products added</h2> : <main>{this.displayCart()}</main>}
+				<div>
+					<p>Total: <strong>${total}</strong></p>
+				</div>
 			</>
 		);
 	}

@@ -7,6 +7,7 @@ export class StoreProvider extends Component {
 		currentCurrency: '',
 		id: '',
 		cart: [],
+		total: 0,
 	};
 
 	addToCartHandler = (product, id) => {
@@ -34,6 +35,7 @@ export class StoreProvider extends Component {
 		});
 
 		this.setState({ cart: cart });
+		this.totalPriceHandler();
 	};
 
 	onDecreasingCartItemQuantityHandler = (id) => {
@@ -52,6 +54,7 @@ export class StoreProvider extends Component {
 		});
 
 		this.setState({ cart: cart });
+		this.totalPriceHandler();
 	};
 
 	CurrencyChangeHandler = (e) => {
@@ -62,14 +65,23 @@ export class StoreProvider extends Component {
 		this.setState({ id: productID });
 	};
 
+	totalPriceHandler = () => {
+		const { cart } = this.state;
+		const price = cart.reduce((accum, current) => {
+			return accum + current.prices[0].amount * current.quantity;
+		}, 0);
+		this.setState({ total: price });
+	};
+
 	render() {
-		const { currentCurrency, id, cart, cartItemQuantity } = this.state;
+		const { currentCurrency, id, cart, cartItemQuantity, total } = this.state;
 		const {
 			CurrencyChangeHandler,
 			selectedProduct,
 			addToCartHandler,
 			onIncreasingCartItemQuantityHandler,
 			onDecreasingCartItemQuantityHandler,
+			totalPriceHandler,
 		} = this;
 
 		return (
@@ -79,11 +91,13 @@ export class StoreProvider extends Component {
 					id,
 					cart,
 					cartItemQuantity,
+					total,
 					CurrencyChangeHandler,
 					selectedProduct,
 					addToCartHandler,
 					onIncreasingCartItemQuantityHandler,
 					onDecreasingCartItemQuantityHandler,
+					totalPriceHandler,
 				}}
 			>
 				{this.props.children}
